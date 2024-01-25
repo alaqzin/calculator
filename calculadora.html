@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Alax Fernando</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(45deg, black, crimson);
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .calculadora {
+            position: absolute;
+            background-color: black;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+
+        .display {
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: rgb(31, 31, 31);
+            color: #fff;
+            border: none;
+            width: calc(100% - 10px);
+            border-radius: 5px;
+        }
+
+        .linha {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .botao {
+            width: 70px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: rgb(31, 31, 31);
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .botao:hover {
+            background-color: black;
+        }
+
+        .desenvolvimento {
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+            width: 100%;
+            color: #ccc;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" class="display" id="resultado" disabled>
+        <div class="linha">
+            <button class="botao" onclick="limpar()">C</button>
+            <button class="botao" onclick="apagar()">←</button>
+            <button class="botao" onclick="adicionar('/')">/</button>
+            <button class="botao" onclick="adicionar('*')">*</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('7')">7</button>
+            <button class="botao" onclick="adicionar('8')">8</button>
+            <button class="botao" onclick="adicionar('9')">9</button>
+            <button class="botao" onclick="adicionar('-')">-</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('4')">4</button>
+            <button class="botao" onclick="adicionar('5')">5</button>
+            <button class="botao" onclick="adicionar('6')">6</button>
+            <button class="botao" onclick="adicionar('+')">+</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('1')">1</button>
+            <button class="botao" onclick="adicionar('2')">2</button>
+            <button class="botao" onclick="adicionar('3')">3</button>
+            <button class="botao" onclick="calcular()">=</button>
+        </div>
+        <div class="linha">
+            <button class="botao" onclick="adicionar('0')">0</button>
+            <button class="botao" onclick="adicionar('.')">.</button>
+        </div>
+    </div>
+
+    <div class="desenvolvimento">
+        Desenvolvido por Alax Fernando
+    </div>
+
+    <script>
+        function adicionar(valor) {
+            document.getElementById("resultado").value += valor;
+        }
+
+        function limpar() {
+            document.getElementById("resultado").value = "";
+        }
+
+        function apagar() {
+            var resultado = document.getElementById("resultado").value;
+            document.getElementById("resultado").value = resultado.slice(0, -1);
+        }
+
+        function calcular() {
+            var resultado = eval(document.getElementById("resultado").value);
+            document.getElementById("resultado").value = resultado;
+        }
+    </script>
+</body>
+</html>
